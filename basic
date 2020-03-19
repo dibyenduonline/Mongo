@@ -1,0 +1,59 @@
+Test the port for Atlas
+http://portquiz.net:27017/
+-----
+
+
+My cluster
+
+mongo "mongodb+srv://<<short>>cluster0-f2dqg.mongodb.net/test"  --username m001-student
+
+
+
+show dbs
+
+use video
+
+show collections
+
+db.movieDetails.find().pretty()
+
+db.movieScratch.insertOne({title:"Serendipity",year:1987,imdb:"tt662802011"})
+
+
+
+db.movieScratch.insertMany(
+[
+{title:"Serendipity",year:1987,imdb:"tt662802qweqwe"},
+{title:"Street Hawk",year:1993,imdb:"tt6009182s"},
+{title:"Mr. India",year:1991,imdb:"tt66280asdd2011"},
+{title:"Indiana jones",year:1999,imdb:"tt662802d33301112"}
+],
+{
+odered: false
+}
+)
+
+
+db.movieDetails.find({genres:'Family'}).count()
+
+
+db.movieDetails.find({"genres.1":"Western"}).count()
+
+ db.movieDetails.find({"writers":{"$in":["Ethan Coen","Joel Coen"]}}).count()
+
+ .find({atmosphericPressureChange:{"$exists":false}})
+
+ .find({$or:[{"watlev":{"$eq":"always dry"}},{"depth":{"$eq":0}}]})
+
+ .find({"sections":{$all:["AG1","MD1","OA1"]}})
+
+ .find({"sections":{$size:2}})
+
+ .find({ results: { $elemMatch: { product: "xyz", score:  7  } } })
+
+ .find({ results: { $elemMatch: { $gte: 70, $lt: 80 } } } )
+
+ .find({tripduration:{"$exists":true,"$eq":null}})
+
+ .find({cast:{$in:["Jack Nicholson","John Huston"]},"viewerRating":{"$gt":7},"mpaaRating":"R"})
+
